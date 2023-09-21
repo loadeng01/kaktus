@@ -16,22 +16,6 @@ def get_soup(html):
     return soup
 
 
-# def get_past_day(soup):
-#     try:
-#         past_day = soup.find('div', class_='PaginatorDate-Short').find('a', class_='PaginatorDate-Short--yesterday').get('href')
-#     except:
-#         past_day = ''
-    
-#     return past_day
-
-
-# def get_next_day(soup):
-#     try:
-#         next_day = soup.find('div', class_='PaginatorDate-Short').find('a', class_='PaginatorDate-Short--tomorrow').get('href')
-#     except:
-#         next_day = ''  
-    
-#     return next_day
 
 def get_date(url):
     html = get_html(url)
