@@ -5,7 +5,7 @@ from pars import main, get_date
 
 
 TOKEN = '6433976747:AAFN3nhTGjvivAFnY6IffPPLGybE7-OHUVg'
-url = 'https://kaktus.media/?lable=8&date=2023-09-21&order=time'
+url = 'https://kaktus.media/'
 
 bot = Bot(TOKEN, parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot)
@@ -46,7 +46,7 @@ async def process_callback_button1(callback_query: types.CallbackQuery):
 
 @dp.message_handler(Text(equals='Quit'))
 async def get_quit(message: types.Message):
-    await message.answer('Досвидания')
+    await message.answer('Ариведерчи')
 
 
 executor.start_polling(dp)

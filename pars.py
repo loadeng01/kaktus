@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as B
 
 
 # HEADERS = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
-url = 'https://kaktus.media/?lable=8&date=2023-09-21&order=time'
+url = 'https://kaktus.media/'
 
 
 def get_html(url):
@@ -16,15 +16,21 @@ def get_soup(html):
     return soup
 
 
-
 def get_date(url):
-    html = get_html(url)
-    soup = get_soup(html)
-    return soup.find('span', class_='PaginatorDate--today-text').text.strip()
+    ht = get_html(url)
+    sp = get_soup(ht)
+    real = sp.find('a', class_='Main--all_news-link').get('href')
+    html = get_html(real)
+    new_soup = get_soup(html)
+    return new_soup.find('span', class_='PaginatorDate--today-text').text.strip()
+
 
 def get_data(soup):
-    news = soup.find_all('div', class_='ArticleItem--data') 
-    
+    real = soup.find('a', class_='Main--all_news-link').get('href')
+    html = get_html(real)
+    new_soup = get_soup(html)
+    news = new_soup.find_all('div', class_='ArticleItem--data') 
+
     newspaper = []
     for new in news:
         try:
